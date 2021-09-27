@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+
 export default function Form(props) {
   const [name, setName] = useState('')
 
@@ -19,18 +22,17 @@ export default function Form(props) {
           What needs to be done?
         </label>
       </h2>
-      <input
-        type="text"
+      <TextField
         id="new-todo-input"
         className="input input__lg"
-        name="text"
+        label="please enter event name"
         autoComplete="off"
         value={name}
         onChange={handleChange}
       />
-      <button type="submit" className="btn btn__primary btn__lg">
+      <Button variant="contained" size="large" type="submit" className="btn btn__primary btn__lg">
         Add
-      </button>
+      </Button>
     </form>
   )
 }

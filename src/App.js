@@ -1,4 +1,4 @@
-import './App.css'
+// import './App.css'
 
 import { useState, useRef, useEffect } from 'react'
 import { nanoid } from "nanoid"
@@ -6,6 +6,7 @@ import { nanoid } from "nanoid"
 import ToDo from './components/ToDo'
 import Form from './components/Form'
 import FilterButton from './components/FilterButton'
+import ButtonGroup from '@mui/material/ButtonGroup'
 
 function App(props) {
   const [tasks, setTask] = useState(props.tasks)
@@ -23,7 +24,7 @@ function App(props) {
 
   const filterList = FILTER_NAMES.map(name => (
     <FilterButton key={name} name={name} isPressed={name === filter}
-      setFilter={setFilter}></FilterButton>
+      setFilter={setFilter} ></FilterButton>
   ))
 
   const addTask = function (name) {
@@ -91,12 +92,12 @@ function App(props) {
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
       <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">
-        {filterList}
-      </div>
       <h2 id="list-heading" ref={listHeadingRef}>
         {headingText}
       </h2>
+      <ButtonGroup sx={{ display: 'block' }} size="large" variant="contained" aria-label="outlined primary button group">
+        {filterList}
+      </ButtonGroup>
       <ul
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
